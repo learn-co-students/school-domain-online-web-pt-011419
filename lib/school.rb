@@ -1,31 +1,31 @@
-# code here!
-class School
-
-  def initialize(school_name)
-    @school_name = school_name
+class School 
+  def initialize(school)
+    @school = school
     @roster = {}
   end
-
+  
   def roster
     @roster
   end
-
+  
   def add_student(name, grade)
-    @student_name = name
+    @name = name
     @grade = grade
-    if @roster.include?(grade) == false
-      @roster[grade] = []
+    if @roster.include?(grade) == true # check if roster already includes grade
+      @roster[grade] << name
+    else 
+      @roster[grade] = [] # create array for grade if it doesn't already exist
+      @roster[grade] << name # push name to array
     end
-    @roster[grade] << name
   end
-
-  def grade(number)
-    @roster[number]
+  
+  def grade(grade)
+    @roster[grade]
   end
-
+  
   def sort
-    @roster.each do |grade, name|
-      @roster[grade] = name.sort
+    @roster.each do |grade, students| # iterate over roster
+      @roster[grade] = students.sort # for each grade, sort students array
     end
   end
 end
